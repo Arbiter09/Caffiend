@@ -17,7 +17,8 @@ export default function Layout(props) {
     const footer = (
         <footer>
             <p><span className="text-gradient">Caffiend</span> was made by <a target="_blank" href="https://github.com/Arbiter09">Jas!</a>
-            <br /> <a target="_blank" href="https://www.linkedin.com/in/jas-shah-709854233/">LinkedIn</a>
+            <br />Check out my <a target="_blank" href="https://www.linkedin.com/in/jas-shah-709854233/">LinkedIn</a>
+            <br />Check this project out on <a target="_blank" href="https://github.com/Arbiter09/Caffiend">Github!</a>
             </p>
         </footer>
     )
