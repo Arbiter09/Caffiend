@@ -14,13 +14,20 @@ export default function Stats() {
 
     const stats = calculateCoffeeStats(coffeeConsumptionHistory)
 
+    // return {
+    //     daily_caffeine: averageDailyCaffeine,
+    //     daily_cost: averageDailyCost,
+    //     average_coffees: (totalCoffees / days).toFixed(2),
+    //     total_cost: totalCost.toFixed(2),
+    //   };
+
     const caffeineLevel = calculateCurrentCaffeineLevel(coffeeConsumptionHistory)
     const warningLevel = caffeineLevel < statusLevels['low'].maxLevel ? 
         'low' :
         caffeineLevel < statusLevels['moderate'].maxLevel ?
         'moderate' :
         'high'
-
+    
     return (
         <>
             <div className="section-header">
@@ -32,7 +39,7 @@ export default function Stats() {
                 <StatCard lg title="Active Caffine Level">
                     <div className="status">
                         <p><span className="stat-text">{caffeineLevel}</span>mg</p>
-                        <h5 style={{color: statusLevels[warningLevel].color, background: statusLevels[warningLevel].background}}>Low</h5>
+                        <h5 style={{color: statusLevels[warningLevel].color, background: statusLevels[warningLevel].background}}>{warningLevel}</h5>
                     </div>
                     <p>{statusLevels[warningLevel].description}</p>
                 </StatCard>
