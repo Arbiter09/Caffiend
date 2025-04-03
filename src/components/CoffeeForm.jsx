@@ -2,6 +2,9 @@ import { coffeeOptions } from "../utils"
 import {useState} from 'react'
 import Modal from "./Modal"
 import Authentication from "./Authentication";
+import { useAuth } from "../context/AuthContext";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../../firebase";
 
 
 export default function CoffeeForm(props) {
@@ -15,12 +18,56 @@ export default function CoffeeForm(props) {
 
     const {isAuthenticated} = props
 
-    function handleSubmitForm() {
+    const {globalData,setGlobalData,globalUser} = useAuth()
+
+    async function handleSubmitForm() {
         if (!isAuthenticated) {
             setShowModal(true)
             return 
         }
-        console.log(selectedCoffee,coffeeCost,hour,min)
+        // define a guard clause that only submits the form if it is completed
+        if (!selectedCoffee) {
+            return 
+        }
+
+        try {
+            // then we are going to create a new data object
+            const newGlobalData = {
+                ...(globalData || {} )
+                
+            }
+
+            const nowTime  = Date.now()
+            
+            const timeToSubtract = (hour  * 60 * 60 *1000) + (min * 60 * 1000)
+
+            const timestamp = nowTime - timeToSubtract
+
+            const newData = {
+                name: selectedCoffee,
+                cost: coffeeCost
+            }
+
+            newGlobalData[timestamp] = newData
+
+            console.log(timestamp,selectedCoffee,coffeeCost)
+            // update the global state
+
+            setGlobalData(newGlobalData)
+            // persist the data in the firebase firestore
+            const userRef = doc(db, 'users', globalUser.uid)
+            const res = await setDoc(userRef,{
+                [timestamp] : newData
+            },{merge:true})
+
+            setSelectedCoffee(null)
+            setHour(0)
+            setMin(0)
+            setCoffeeCost(0)
+        } catch (error) {
+            console.log(error.message)
+        }
+
     }
     function handleCloseModal() {
         setShowModal(false)
