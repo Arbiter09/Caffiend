@@ -1,3 +1,4 @@
+
 # Caffiend – Coffee Tracking App
 
 Caffiend is a web application for coffee enthusiasts that allows you to track every cup of coffee you drink, monitor your caffeine levels over time, and keep track of the cost of your daily coffee habit. Built with React and Firebase, Caffiend features user authentication, interactive forms, detailed consumption history, and real-time statistics to help you better understand your caffeine intake.
@@ -34,7 +35,6 @@ Caffiend is a web application for coffee enthusiasts that allows you to track ev
 
 - **Statistics Dashboard:**  
   Analyze your coffee consumption with statistics such as:
-
   - Active and daily caffeine levels
   - Average number of coffees per day
   - Daily and total cost
@@ -101,9 +101,7 @@ Below is an overview of the main components and files:
    cd Caffiend
    ```
 
-````
-
-2. **Install Dependencies:**
+2. **Install Dependencies:**  
    Ensure you have Node.js and npm installed. Then run:
 
    ```bash
@@ -134,7 +132,7 @@ Below is an overview of the main components and files:
      export const db = getFirestore(app);
      ```
 
-4. **Run the Application:**
+4. **Run the Application:**  
    Start the development server with:
 
    ```bash
@@ -147,10 +145,10 @@ Below is an overview of the main components and files:
 
 ## Usage
 
-- **Authentication:**
+- **Authentication:**  
   When you first visit the app, click on the "Sign Up free" button to open the modal. You can switch between "Sign Up" and "Login" modes. After a successful authentication, the modal will close.
 
-- **Tracking Coffee Consumption:**
+- **Tracking Coffee Consumption:**  
   Navigate to the coffee tracking form. Select your coffee type (or choose "Other" for additional options), enter the cost, and specify the time since consumption (hours and minutes). Click "Add Entry" to record your coffee.
 
 - **Viewing History & Stats:**
@@ -216,8 +214,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ---
 
 Enjoy tracking your coffee habits with Caffiend and stay caffeinated responsibly!
-
 ```
-
-```
-````
